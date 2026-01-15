@@ -272,36 +272,34 @@
     const line1 = document.querySelectorAll('.line1 span');
     const line2 = document.querySelectorAll('.line2 span');
     const letters = [...line1, ...line2];
-
+    
     const amplitude = 20;       // wave height in px
-    const waveDuration = 1200;  // duration of wave per letter in ms
-    const letterGap = 150;      // gap between letters starting in ms
-
-    let letterTimers = letters.map(() => 0); // stores per-letter wave start time
-    let startTime = performance.now();
-
+    const waveDuration = 1000;  // duration of each letter wave in ms
+    const letterGap = 150;      // gap between letters
+    
     function animateWave(timestamp) {
-      const elapsed = timestamp - startTime;
-
+      // Total time until the last letter starts
+      const loopTime = (letters.length - 1) * letterGap;
+    
       letters.forEach((span, i) => {
-        // Each letter starts after previous one, but no hard restriction on finish
-        const letterStart = i * letterGap;
-
-        // Ensure first letter doesn't restart until last letter has started
-        if (i === 0) {
-          const lastLetterStart = (letters.length - 1) * letterGap;
-          const cycles = Math.floor((elapsed - lastLetterStart) / (letters.length * letterGap));
-          if (cycles > 0) letterTimers[i] = lastLetterStart + cycles * letters.length * letterGap;
-        }
-
-        const t = Math.max(0, elapsed - letterStart - letterTimers[i]);
+        // Time since this letter's wave should start
+        let t = timestamp - i * letterGap;
+    
+        // Prevent first letters from starting a new wave before last letter starts
+        t = t % (loopTime + waveDuration);
+    
+        // Clamp t to [0, waveDuration] for smooth wave
+        if (t < 0) t = 0;
+        if (t > waveDuration) t = waveDuration;
+    
+        // Sine wave movement
         const y = Math.sin((t / waveDuration) * Math.PI) * amplitude;
         span.style.transform = `translateY(${y}px)`;
       });
-
+    
       requestAnimationFrame(animateWave);
     }
-
+    
     requestAnimationFrame(animateWave);
 
     // --- Section fade-in on scroll ---
