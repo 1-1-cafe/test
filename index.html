@@ -173,6 +173,23 @@
       object-fit: cover;
     }
 
+    .address {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    
+    .address a {
+      color: var(--text-dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .address a:hover {
+      color: var(--accent-pink);
+      border-bottom-color: var(--accent-pink);
+    }
+
     .map {
       margin-top: 2rem;
       max-width: 100%;
@@ -257,6 +274,15 @@
     <div class="container">
       <h2>Find Us</h2>
       <p>Located in Zürich, with roots in Seoul.</p>
+      <p class="address">
+        <a 
+          href="https://www.google.com/maps/search/?api=1&query=Müllerstrasse+76+Zürich"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Müllerstrasse 76
+        </a>
+      </p>
       <div class="map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.884702471365!2d8.541694615851086!3d47.3768869791714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a0f30678ebf%3A0x7d7f1e7dc85b05fc!2sZ%C3%BCrich%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1626865651842!5m2!1sen!2sch" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
