@@ -108,7 +108,7 @@
     .hero-card-blob {
       position: absolute;
       inset: 0;
-      background-image: url('images/red-blob');
+      background-image: url('images/red-blob.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 120%;
@@ -326,48 +326,37 @@
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 3rem;
+      gap: 3mm;
+      padding: 0 3mm;
     }
     
     /* Each tile has a fixed visual box */
     .menu-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    
-      height: 260px; /* ⬅️ defines uniform format like reference */
+      height: 45vh; /* ⬅️ almost full screen height per row */
+      overflow: hidden;
     }
     
-    /* Images scale consistently */
     .menu-item img {
-      max-width: 180px;
-      max-height: 180px;
-      width: auto;    /* ⬅️ prevents stretching */
-      height: auto;   /* ⬅️ maintains original ratio */
-      object-fit: contain;
+      width: 100%;
+      height: 100%;   /* fill container */
+      object-fit: cover;
     }
     
     /* ============================= */
     /* RESPONSIVE                    */
     /* ============================= */
     
-    @media (max-width: 900px) {
+    @media (max-width: 1200px) {
       .menu-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-    
-      .menu-item {
-        height: 220px; /* ⬅️ slightly smaller on tablet */
+        gap: 2mm;
       }
     }
     
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .menu-grid {
         grid-template-columns: 1fr;
-      }
-    
-      .menu-item {
-        height: 200px;
+        gap: 2mm;
       }
     }
 
