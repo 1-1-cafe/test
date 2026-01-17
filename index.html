@@ -44,10 +44,17 @@
     }
 
     /* --- HERO SLIDER --- */
+    .hero {
+      height: 75vh;        /* réduit TOUT verticalement */
+      max-height: 650px;
+      position: relative;
+      overflow: hidden;
+    }
+    
     .hero-slider {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -101,7 +108,7 @@
       z-index: 5;
       background: #ffffff;
       width: min(420px, 85%);
-      height: calc(100vh - 10mm); /* ~5mm visible top & bottom */
+      height: calc(100% - 10mm); /* ~5mm visible top & bottom */
       margin: auto;
       display: flex;
       flex-direction: column;
@@ -204,7 +211,10 @@
     }
 
     /* --- SECTIONS --- */
-    section {
+    section.intro,
+    section.menu,
+    section.gallery,
+    section.contact {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease-in-out;
@@ -321,32 +331,33 @@
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <section class="hero-slider">
-      <div class="slides">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348');"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');"></div>
-      </div>
-    
-      <div class="slider-dots">
-        <button class="dot active"></button>
-        <button class="dot"></button>
-        <button class="dot"></button>
-      </div>
-
-      <div class="hero-card">
-        <div class="hero-meta">
-          <span>All day café</span>
-          <span>Zürich</span>
-          <span>Since 2025</span>
+  <section class="hero">
+    <div class="hero-slider">
+        <div class="slides">
+          <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');"></div>
+          <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348');"></div>
+          <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');"></div>
         </div>
-        
-        <img src="logo/g13.png" alt="1:1 Logo" class="hero-logo">
       
-        <div class="hero-title">
-          1:1<br>
-          zurich
+        <div class="slider-dots">
+          <button class="dot active"></button>
+          <button class="dot"></button>
+          <button class="dot"></button>
+        </div>
+  
+        <div class="hero-card">
+          <div class="hero-meta">
+            <span>All day café</span>
+            <span>Zürich</span>
+            <span>Since 2025</span>
+          </div>
+          
+          <img src="logo/g13.png" alt="1:1 Logo" class="hero-logo">
+        
+          <div class="hero-title">
+            1:1<br>
+            zurich
+          </div>
         </div>
       </div>
     </section>
@@ -491,7 +502,9 @@
     requestAnimationFrame(animateWave);
 
     // --- Section fade-in on scroll ---
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll(
+      '.intro, .menu, .gallery, .contact'
+    );
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
