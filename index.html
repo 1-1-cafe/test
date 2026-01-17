@@ -103,6 +103,29 @@
     }
 
     /* --- CENTRAL WHITE CARD --- */
+    /* --- HERO CARD INNER BACKGROUND BLOB --- */
+    .hero-card {
+      position: relative;
+      overflow: hidden; /* ensures blob stays inside card */
+    }
+    
+    .hero-card-blob {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/red-blob');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 120%;
+      opacity: 0.85;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    /* Ensure content stays above blob */
+    .hero-card > *:not(.hero-card-blob) {
+      position: relative;
+      z-index: 2;
+    }
     .hero-card {
       position: relative;
       z-index: 5;
@@ -110,11 +133,14 @@
       width: min(420px, 85%);
       height: calc(100% - 10mm); /* ~5mm visible top & bottom */
       margin: auto;
+      
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      
       box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      overflow: hidden; /* required for inner blob */
     }
     
     /* Logo inside card */
@@ -346,6 +372,8 @@
         </div>
   
         <div class="hero-card">
+          <!-- INNER BACKGROUND BLOB -->
+          <div class="hero-card-blob"></div>
           <div class="hero-meta">
             <span>All day café</span>
             <span>Zürich</span>
