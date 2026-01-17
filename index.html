@@ -284,12 +284,91 @@
       margin-top: 2rem;
     }
 
+    /* ============================= */
+    /* MENU SECTION                  */
+    /* ============================= */
+    
+    .menu-section {
+      max-width: 1200px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+    }
+    
+    /* Header (unchanged logic) */
+    .menu-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .menu-index {
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      font-size: 0.75rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    .menu-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0;
+    }
+    
+    /* ============================= */
+    /* IMAGE GRID                    */
+    /* ============================= */
+    
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+    }
+    
+    /* Each tile has a fixed visual box */
     .menu-item {
-      background: #fff;
-      border: 1px solid #eee;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    
+      height: 260px; /* ⬅️ defines uniform format like reference */
+    }
+    
+    /* Images scale consistently */
+    .menu-item img {
+      max-width: 180px;
+      max-height: 180px;
+      width: auto;    /* ⬅️ prevents stretching */
+      height: auto;   /* ⬅️ maintains original ratio */
+      object-fit: contain;
+    }
+    
+    /* ============================= */
+    /* RESPONSIVE                    */
+    /* ============================= */
+    
+    @media (max-width: 900px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    
+      .menu-item {
+        height: 220px; /* ⬅️ slightly smaller on tablet */
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    
+      .menu-item {
+        height: 200px;
+      }
     }
 
     .gallery-grid {
@@ -410,17 +489,35 @@
     </div>
   </section>
 
-  <section id="menu" class="menu">
-    <div class="container">
-      <h2>Our Menu</h2>
-      <div class="menu-items">
-        <div class="menu-item"><strong>Iced Americano</strong><br>5.0</div>
-        <div class="menu-item"><strong>Iced Matcha Americano</strong><br>6.5</div>
-        <div class="menu-item"><strong>Iced Condensed Milk Latte</strong><br>6.5</div>
-        <div class="menu-item"><strong>Iced Coconut Matcha</strong><br>7.0</div>
+  <section id="menu" class="menu-section">
+  <!-- Section header stays the same -->
+      <div class="menu-header">
+        <span class="menu-index">01</span>
+        <h2 class="menu-title">
+          You don’t always see what<br>
+          is inside but it’s there
+        </h2>
       </div>
-    </div>
-  </section>
+    
+      <!-- Image-only grid -->
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/1.png" alt="Menu item 1">
+        </div>
+    
+        <div class="menu-item">
+          <img src="images/2.png" alt="Menu item 2">
+        </div>
+    
+        <div class="menu-item">
+          <img src="images/3.png" alt="Menu item 3">
+        </div>
+    
+        <div class="menu-item">
+          <img src="images/4.png" alt="Menu item 4">
+        </div>
+      </div>
+    </section>
 
   <section id="gallery" class="gallery">
     <div class="container">
