@@ -129,12 +129,11 @@
       width: min(420px, 85%);
       height: calc(100% - 10mm); /* ~5mm visible top & bottom */
       margin: auto;
-      
+    
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      
+    
       box-shadow: 0 10px 40px rgba(0,0,0,0.08);
       overflow: hidden; /* required for inner blob */
     }
@@ -143,7 +142,8 @@
     .hero-logo {
       width: 90px;
       height: auto;
-      margin-bottom: 2rem;
+      margin-top: 5rem; /* ⬅️ creates space below meta */
+      margin-bottom: 1.5rem;
     }
     
     /* Title text */
@@ -157,15 +157,19 @@
     /* --- TOP META TEXT --- */
     .hero-meta {
       position: absolute;
-      top: 2.5rem;
+      top: 1.5rem; /* ⬅️ slightly tighter to the top */
       left: 0;
       width: 100%;
+    
       display: flex;
       justify-content: space-around;
+    
       font-size: 0.75rem;
       letter-spacing: 0.05em;
       color: #888;
       text-transform: uppercase;
+    
+      z-index: 3; /* ⬅️ explicit, stays above blob */
     }
 
     /* --- HEADER --- */
